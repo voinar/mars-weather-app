@@ -1,20 +1,20 @@
-export const getStaticProps = async () => {
-  const url =
-    'http://cab.inta-csic.es/rems//wp-content/plugins/marsweather-widget/api.php';
+// export const getStaticProps = async () => {
+//   const url =
+//     'http://cab.inta-csic.es/rems//wp-content/plugins/marsweather-widget/api.php';
 
-  const response = await fetch(url);
-  const data = await response.text();
+//   const response = await fetch(url);
+//   const data = await response.text();
 
-  return {
-    props: { weatherData: data },
-  };
-};
+//   return {
+//     props: { weatherData: data },
+//   };
+// };
 
 const Weather = ({ weatherData }) => {
   const weatherDataSoles = JSON.parse(weatherData).soles;
   const soles = weatherDataSoles.map((sol) => {
     return (
-      <li key={sol.id} className="border rounded-md p-4 w-80">
+      <li key={sol.id} className="border rounded-md p-4">
         <ul>
           <li>
             Sol: <span>{sol.sol}</span>
@@ -23,7 +23,7 @@ const Weather = ({ weatherData }) => {
             Sky: <span>{sol.atmo_opacity}</span>
           </li>
           <li>
-            UV Index: <span>{sol.local_uv_irradiance_index}</span>
+            Radiation: <span>{sol.local_uv_irradiance_index}</span>
           </li>
           <li>
             Solar longitude: <span>{sol.ls} deg</span>
@@ -56,7 +56,7 @@ const Weather = ({ weatherData }) => {
             Sunset: <span>{sol.sunset}</span>
           </li>
           <li>
-            Earth date: <span>{sol.terrestrial_date}</span>
+            Terrestrial date: <span>{sol.terrestrial_date}</span>
           </li>
           {/* <li>
             Wind direction: <span>{sol.wind_direction}</span>
@@ -74,7 +74,7 @@ const Weather = ({ weatherData }) => {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between mt-40">
       <h1>Curiosity Rover Weather Data</h1>
       <ul className="flex flex-wrap gap-4">{soles}</ul>
     </main>
