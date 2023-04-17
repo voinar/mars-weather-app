@@ -16,6 +16,7 @@ import sunIcon from '../public/img/icons/sun.svg';
 import cloudsIcon from '../public/img/icons/clouds.svg';
 import overcastIcon from '../public/img/icons/overcast.svg';
 import dustIcon from '../public/img/icons/dust.svg';
+import lsIcon from '../public/img/icons/ls.svg';
 import temperatureIcon from '../public/img/icons/temperature.svg';
 
 import Weather from './weather';
@@ -41,7 +42,21 @@ const Home = ({ weatherData }) => {
     <>
       <nav className="fixed z-10 flex w-full px-24 pt-10">
         <ul className="flex gap-10 ml-auto font-light">
-          <li>Home</li>
+          <li>
+            <Link href="#home" scroll={false}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="#details" scroll={false}>
+              Latest
+            </Link>
+          </li>
+          <li>
+            <Link href="#gallery" scroll={false}>
+              Gallery
+            </Link>
+          </li>
           <li>
             <button
               onClick={() => setTemperatureAsCelsius((prevState) => !prevState)}
@@ -53,7 +68,7 @@ const Home = ({ weatherData }) => {
         </ul>
       </nav>
 
-      <main className="relative text-red-50 font-thin">
+      <main id="home" className="relative text-red-50 font-thin">
         <div className="bg-hero_background bg-cover flex min-h-screen flex-col items-center justify-between p-24 columns"></div>
         <div className="absolute top-0 left-0 w-full h-full p-24 bg-gradient-to-r from-transparent to-orange-950 mix-blend-lighten">
           <div
@@ -155,7 +170,7 @@ const Home = ({ weatherData }) => {
                         cloudsIcon)
                     }
                     alt="Sky"
-                    width={60}
+                    width={130}
                   />
                   <div className="flex justify-end mt-4">
                     <div className="flex w-28 gap-2">
@@ -312,13 +327,18 @@ const Home = ({ weatherData }) => {
                 </div>
                 <div className="text-4xl my-10 flex gap-4">
                   <Image src={sunriseIcon} alt="Sky" width={40} />
-                  <span>Sunrise at</span>{' '}
+                  <span>Sunrise at:</span>{' '}
                   <span className="text-4xl">{weatherDataLatest.sunrise}</span>
                 </div>
                 <div className="text-4xl my-10 flex gap-4">
                   <Image src={sunsetIcon} alt="Sky" width={40} />
-                  <span>Sunset at</span>{' '}
+                  <span>Sunset at:</span>{' '}
                   <span className="text-4xl">{weatherDataLatest.sunset}</span>
+                </div>
+                <div className="text-4xl my-10 flex gap-4">
+                  <Image src={lsIcon} alt="Sky" width={40} />
+                  <span>Solar longitude:</span>
+                  <span className="text-4xl">{weatherDataLatest.ls}</span>
                 </div>
               </div>
               <Image
