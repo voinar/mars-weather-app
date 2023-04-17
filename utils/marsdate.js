@@ -13,7 +13,7 @@
 
 'use strict';
 
-class MarsDate {
+export class MarsDate {
   constructor() {
     var tzRegex = /[^-+\dA-Z]/g;
     var dateRegex = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZWN]|'[^']*'|'[^']*'/g;

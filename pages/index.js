@@ -19,7 +19,7 @@ import dustIcon from '../public/img/icons/dust.svg';
 import lsIcon from '../public/img/icons/ls.svg';
 import temperatureIcon from '../public/img/icons/temperature.svg';
 
-import Weather from './weather';
+import Weather from '../components/Weather';
 
 export const getStaticProps = async () => {
   const url =
@@ -83,7 +83,7 @@ const Home = ({ weatherData }) => {
             <section>
               <div className="flex gap-12">
                 <div className="flex-col">
-                  <Link href="#details">
+                  <Link href="#details" scroll={false}>
                     <div className="flex justify-between">
                       <Image src={calendarIcon} alt="Dates" />
                       <span>Sol: {weatherDataLatest.sol}</span>
@@ -212,7 +212,7 @@ const Home = ({ weatherData }) => {
               </div>
             </section>
           </div>
-          <section id="details" className="h-full mt-44">
+          <section id="details" className="h-full mt-44 pt-24">
             <div className="text-4xl mb-10 flex gap-2">
               <Image
                 src={temperatureIcon}
@@ -268,8 +268,8 @@ const Home = ({ weatherData }) => {
                 <div className="flex">
                   <span className="text-8xl">
                     {temperatureAsCelsius
-                      ? weatherDataLatest.max_temp
-                      : ((weatherDataLatest.max_temp * 9) / 5 + 32).toFixed()}
+                      ? weatherDataLatest.min_temp
+                      : ((weatherDataLatest.min_temp * 9) / 5 + 32).toFixed()}
                   </span>
                   <Image
                     src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
@@ -284,8 +284,8 @@ const Home = ({ weatherData }) => {
                 <div className="flex">
                   <span className="text-8xl">
                     {temperatureAsCelsius
-                      ? weatherDataLatest.min_temp
-                      : ((weatherDataLatest.min_temp * 9) / 5 + 32).toFixed()}
+                      ? weatherDataLatest.max_temp
+                      : ((weatherDataLatest.max_temp * 9) / 5 + 32).toFixed()}
                   </span>
                   <Image
                     src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
