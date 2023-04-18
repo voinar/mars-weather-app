@@ -36,7 +36,6 @@ export const getStaticProps = async () => {
 const Home = ({ weatherData }) => {
   const [temperatureAsCelsius, setTemperatureAsCelsius] = useState(true);
   const weatherDataLatest = JSON.parse(weatherData).soles[0];
-  // console.log(weatherDataLatest);
 
   return (
     <>
