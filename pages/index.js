@@ -20,6 +20,7 @@ import lsIcon from '../public/img/icons/ls.svg';
 import temperatureIcon from '../public/img/icons/temperature.svg';
 
 import Weather from '../components/Weather';
+import { MarsDate } from '/utils/marsdate.js';
 
 export const getStaticProps = async () => {
   const url =
@@ -36,6 +37,7 @@ export const getStaticProps = async () => {
 const Home = ({ weatherData }) => {
   const [temperatureAsCelsius, setTemperatureAsCelsius] = useState(true);
   const weatherDataLatest = JSON.parse(weatherData).soles[0];
+  console.log(new MarsDate(new Date(weatherDataLatest.terrestrial_date)));
 
   return (
     <>
@@ -47,7 +49,7 @@ const Home = ({ weatherData }) => {
             </Link>
           </li>
           <li>
-            <Link href="#details" scroll={false}>
+            <Link href="#latest" scroll={false}>
               Latest
             </Link>
           </li>
@@ -70,19 +72,17 @@ const Home = ({ weatherData }) => {
       <main id="home" className="relative text-red-50 font-thin">
         <div className="bg-hero_background bg-cover flex min-h-screen flex-col items-center justify-between p-24 columns"></div>
         <div className="absolute top-0 left-0 w-full h-full p-24 bg-gradient-to-r from-transparent to-orange-950 mix-blend-lighten">
-          <div
-            className="w-[50%] h-full
+          <header
+            className="w-full h-full
         flex flex-col justify-between"
           >
-            <header>
-              <h1 className="text-8xl">
-                Mars <br /> Weather <br /> Stream
-              </h1>
-            </header>
-            <section>
-              <div className="flex gap-12">
-                <div className="flex-col">
-                  <Link href="#details" scroll={false}>
+            <h1 className="xl:text-8xl md:text-5xl">
+              Mars <br /> Weather <br /> Stream
+            </h1>
+            <div className="flex">
+              <div className="flex flex-col lg:flex-row gap-12 justify-end">
+                <div className="flex-col mt-auto">
+                  <Link href="#latest" scroll={false}>
                     <div className="flex justify-between">
                       <Image src={calendarIcon} alt="Dates" />
                       <span>Sol: {weatherDataLatest.sol}</span>
@@ -92,7 +92,11 @@ const Home = ({ weatherData }) => {
                     <div className="flex justify-between">
                       <span>Autumn</span>
                       <span>|</span>
-                      <span>Year 36, {weatherDataLatest.season}</span>
+                      <span>
+                        {new MarsDate(
+                          new Date(weatherDataLatest.terrestrial_date)
+                        ).string.slice(0, -24)}
+                      </span>
                     </div>
                   </Link>
                   <div>
@@ -209,17 +213,16 @@ const Home = ({ weatherData }) => {
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-          <section id="details" className="h-full mt-44 pt-24">
-            <div className="text-4xl mb-10 flex gap-2">
+            </div>
+          </header>
+          <section id="latest" className=" mt-44 pt-24 text-3xl">
+            <div className="mb-10 flex gap-2">
               <Image
                 src={temperatureIcon}
                 alt="Degrees centigrade"
                 width={40}
                 className="self-start"
               />
-              <h2 className="text-4xl"></h2>
               <span>Temperatures recorded on Sol {weatherDataLatest.sol}</span>
               <span>|</span>
               <span>{weatherDataLatest.terrestrial_date}</span>
@@ -293,12 +296,12 @@ const Home = ({ weatherData }) => {
                     className="self-start"
                   />
                 </div>
-                <span className="text-xs">Highest air temperature</span>
+                <span className="text-sm">Highest air temperature</span>
               </div>
             </div>
             <div className="flex justify-between">
-              <div>
-                <div className="text-4xl my-10 flex gap-4">
+              <div className="flex flex-col justify-around text-3xl">
+                <div className="flex gap-4">
                   <Image
                     src={
                       (weatherDataLatest.atmo_opacity === 'Sunny' && sunIcon) ||
@@ -308,33 +311,27 @@ const Home = ({ weatherData }) => {
                     alt="Sky"
                     width={40}
                   />
-                  <span className="text-4xl">
-                    {weatherDataLatest.atmo_opacity}
-                  </span>
+                  <span>{weatherDataLatest.atmo_opacity}</span>
                 </div>
-                <div className="text-4xl my-10 flex gap-4">
+                <div className="flex gap-4">
                   <Image src={pressureIcon} alt="Sky" width={40} />
-                  <span className="text-4xl">
-                    {weatherDataLatest.pressure} Pa
-                  </span>
+                  <span>{weatherDataLatest.pressure} Pa</span>
                 </div>
-                <div className="text-4xl my-10 flex gap-4">
+                <div className="text-3xl flex gap-4">
                   <Image src={uvIcon} alt="Sky" width={40} />
-                  <span className="text-4xl">
-                    {weatherDataLatest.local_uv_irradiance_index}
-                  </span>
+                  <span>{weatherDataLatest.local_uv_irradiance_index}</span>
                 </div>
-                <div className="text-4xl my-10 flex gap-4">
+                <div className="text-3xl flex gap-4">
                   <Image src={sunriseIcon} alt="Sky" width={40} />
                   <span>Sunrise at:</span>{' '}
                   <span className="text-4xl">{weatherDataLatest.sunrise}</span>
                 </div>
-                <div className="text-4xl my-10 flex gap-4">
+                <div className="text-3xl flex gap-4">
                   <Image src={sunsetIcon} alt="Sky" width={40} />
                   <span>Sunset at:</span>{' '}
                   <span className="text-4xl">{weatherDataLatest.sunset}</span>
                 </div>
-                <div className="text-4xl my-10 flex gap-4">
+                <div className="text-3xl flex gap-4">
                   <Image src={lsIcon} alt="Sky" width={40} />
                   <span>Solar longitude:</span>
                   <span className="text-4xl">{weatherDataLatest.ls}</span>
@@ -346,7 +343,7 @@ const Home = ({ weatherData }) => {
                   (weatherDataLatest.atmo_opacity === 'Cloudy' && cloudsIcon)
                 }
                 alt="Sky"
-                width={400}
+                width={300}
               />
             </div>
           </section>
