@@ -72,12 +72,12 @@ const Weather = ({ weatherData }) => {
       ground_temperature_sensor: (-84 - 6) / 2,
     },
     {
-      name: `Highest temperature recorded during sol`,
+      name: `Lowest temperature recorded during sol`,
       air_temperature_sensor: -79,
       ground_temperature_sensor: -21,
     },
     {
-      name: `Lowest temperature recorded during sol`,
+      name: `Highest temperature recorded during sol`,
       air_temperature_sensor: -84,
       ground_temperature_sensor: -6,
     },
@@ -119,12 +119,12 @@ const Weather = ({ weatherData }) => {
         ground_temperature_sensor: (sol.min_gts_temp - sol.max_gts_temp) / 2,
       },
       {
-        name: `Highest temperature recorded during sol`,
+        name: `Lowest temperature recorded during sol`,
         air_temperature_sensor: sol.min_temp,
         ground_temperature_sensor: sol.min_gts_temp,
       },
       {
-        name: `Lowest temperature recorded during sol`,
+        name: `Highest temperature recorded during sol`,
         air_temperature_sensor: sol.max_temp,
         ground_temperature_sensor: sol.max_gts_temp,
       },
