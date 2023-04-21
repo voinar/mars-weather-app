@@ -30,7 +30,7 @@ import 'react-day-picker/dist/style.css';
 
 const TemperatureChart = ({ temperatureChartData }) => {
   return (
-    <div className="h-96">
+    <div className="h-96 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -112,25 +112,15 @@ const Weather = ({ weatherData }) => {
     // },
   ]);
 
-  const [selected, setSelected] = useState();
-  const startDate = new Date(2023, 2, 1);
-  const endDate = new Date(2023, 3, 1);
+  const startDate = new Date(new Date().setDate(new Date().getDate() - 14));
+  const endDate = new Date();
 
-  const defaultSelected = {
+  const [range, setRange] = useState({
     from: startDate,
     to: endDate,
-  };
-  const [range, setRange] = useState({
-    from: new Date('2023-04-06'),
-    to: new Date('2023-04-10'),
   });
-  console
-    .log
-    // 'range: ',
-    // JSON.stringify(range)
-    // format(range.from, 'yyyy-MM-dd'),
-    // format(range.to, 'yyyy-MM-dd')
-    ();
+
+  console.log('range: ', range);
 
   let footer = <p>Please pick the first day.</p>;
   if (range?.from) {
@@ -175,17 +165,23 @@ const Weather = ({ weatherData }) => {
 
   const soles = weatherDataSoles
     .filter((sol) => {
-      if (range.from == undefined || range.to == undefined) {
+      if (
+        range === undefined ||
+        range.from === undefined ||
+        range.to === undefined
+      ) {
         return (
-          sol.terrestrial_date >= '2023-04-11' &&
-          sol.terrestrial_date <= '2023-04-14'
+          sol.terrestrial_date >=
+          format(
+            new Date(new Date().setDate(new Date().getDate() - 14)),
+            'yyyy-MM-dd'
+          )
         );
-      } else if (range.from == range.to) {
-        return (
-          sol.terrestrial_date >= '2023-04-01' &&
-          sol.terrestrial_date <= '2023-04-02'
-        );
-      } else if (range.from != range.to) {
+      } else if (range.from !== undefined && range.to === undefined) {
+        return sol.terrestrial_date == format(range.from, 'yyyy-MM-dd');
+      } else if (range.from === range.to) {
+        return sol.terrestrial_date === format(range.from, 'yyyy-MM-dd');
+      } else if (range.from !== range.to) {
         return (
           sol.terrestrial_date >= format(range.from, 'yyyy-MM-dd') &&
           sol.terrestrial_date <= format(range.to, 'yyyy-MM-dd')
@@ -269,9 +265,8 @@ const Weather = ({ weatherData }) => {
 
   return (
     <section className="flex pt-28 p-10 md:p-24 min-h-screen flex-col items-center justify-between mt-40">
-      <h1>Curiosity Rover Weather Data</h1>
-      <div className="w-full pb-8">
-        <span className="m-8">Temperature amplitude on sol</span>
+      <span className="m-8">Temperature amplitude on sol</span>
+      <div className="flex flex-col lg:flex-row w-full pb-8">
         <DayPicker
           id="dateRangePicker"
           mode="range"
