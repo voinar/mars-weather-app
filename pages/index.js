@@ -222,7 +222,7 @@ const Home = ({ weatherData }) => {
           </div>
         </header>
       </main>
-      <section id="latest" className="mt-44 pt-24 text-3xl font-thin">
+      <section id="latest" className=" pt-28 p-10 md:p-24 text-3xl font-thin">
         <div className="mb-10 flex gap-2">
           <Image
             src={temperatureIcon}

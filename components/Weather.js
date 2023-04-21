@@ -26,7 +26,7 @@ import {
 
 const TemperatureChart = ({ temperatureChartData }) => {
   return (
-    <div className="h-full">
+    <div className="h-96">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -137,15 +137,15 @@ const Weather = ({ weatherData }) => {
   };
 
   const soles = weatherDataSoles
-    .filter((sol) => sol.sol > 3750)
+    .filter((sol) => sol.terrestrial_date > "2023-04-01")
     .map((sol) => {
       return (
         <li
           key={sol.id}
-          className="border rounded-md p-4 cursor-pointer"
-          onClick={() => selectSol(sol)}
+          className="hover:outline rounded-md p-4 m-2 cursor-pointer bg-slate-950"
+          onMouseOver={() => selectSol(sol)}
         >
-          <ul>
+          <ul className="w-64">
             <li>
               Sol: <span>{sol.sol}</span>
             </li>
@@ -214,14 +214,16 @@ const Weather = ({ weatherData }) => {
     });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mt-40">
+    <section className="flex pt-28 p-10 md:p-24 min-h-screen flex-col items-center justify-between mt-40">
       <h1>Curiosity Rover Weather Data</h1>
-      <div className="w-full h-[360px] pb-8">
+      <div className="w-full pb-8">
         <span className="m-8">Temperature amplitude on sol</span>
         <TemperatureChart temperatureChartData={temperatureChartData} />
       </div>
-      <ul className="flex flex-wrap gap-4 mt-8">{soles}</ul>
-    </main>
+      <ul className="flex pt-28 p-10 md:p-24 md:pt-0 overflow-x-auto w-screen gap-4">
+        {soles}
+      </ul>
+    </section>
   );
 };
 
