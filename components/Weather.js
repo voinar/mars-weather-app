@@ -24,6 +24,10 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+import { addDays, format } from 'date-fns';
+import { DateRange, DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+
 const TemperatureChart = ({ temperatureChartData }) => {
   return (
     <div className="h-96">
@@ -108,6 +112,39 @@ const Weather = ({ weatherData }) => {
     // },
   ]);
 
+  const [selected, setSelected] = useState();
+  const startDate = new Date(2023, 2, 1);
+  const endDate = new Date(2023, 3, 1);
+
+  const defaultSelected = {
+    from: startDate,
+    to: endDate,
+  };
+  const [range, setRange] = useState({
+    from: new Date('2023-04-06'),
+    to: new Date('2023-04-10'),
+  });
+  console
+    .log
+    // 'range: ',
+    // JSON.stringify(range)
+    // format(range.from, 'yyyy-MM-dd'),
+    // format(range.to, 'yyyy-MM-dd')
+    ();
+
+  let footer = <p>Please pick the first day.</p>;
+  if (range?.from) {
+    if (!range.to) {
+      footer = <p>{format(range.from, 'PPP')}</p>;
+    } else if (range.to) {
+      footer = (
+        <p>
+          {format(range.from, 'PPP')}–{format(range.to, 'PPP')}
+        </p>
+      );
+    }
+  }
+
   const weatherDataSoles = JSON.parse(weatherData).soles;
   const selectSol = (sol) => {
     console.log(sol);
@@ -137,7 +174,24 @@ const Weather = ({ weatherData }) => {
   };
 
   const soles = weatherDataSoles
-    .filter((sol) => sol.terrestrial_date > "2023-04-01")
+    .filter((sol) => {
+      if (range.from == undefined || range.to == undefined) {
+        return (
+          sol.terrestrial_date >= '2023-04-11' &&
+          sol.terrestrial_date <= '2023-04-14'
+        );
+      } else if (range.from == range.to) {
+        return (
+          sol.terrestrial_date >= '2023-04-01' &&
+          sol.terrestrial_date <= '2023-04-02'
+        );
+      } else if (range.from != range.to) {
+        return (
+          sol.terrestrial_date >= format(range.from, 'yyyy-MM-dd') &&
+          sol.terrestrial_date <= format(range.to, 'yyyy-MM-dd')
+        );
+      }
+    })
     .map((sol) => {
       return (
         <li
@@ -218,6 +272,14 @@ const Weather = ({ weatherData }) => {
       <h1>Curiosity Rover Weather Data</h1>
       <div className="w-full pb-8">
         <span className="m-8">Temperature amplitude on sol</span>
+        <DayPicker
+          id="dateRangePicker"
+          mode="range"
+          defaultMonth={startDate}
+          selected={range}
+          footer={footer}
+          onSelect={setRange}
+        />
         <TemperatureChart temperatureChartData={temperatureChartData} />
       </div>
       <ul className="flex pt-28 p-10 md:p-24 md:pt-0 overflow-x-auto w-screen gap-4">
