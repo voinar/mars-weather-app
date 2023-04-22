@@ -78,26 +78,6 @@ const Weather = ({ weatherData }) => {
       air_temperature_sensor: (-79 - 21) / 2,
       ground_temperature_sensor: (-84 - 6) / 2,
     },
-    // {
-    //   "id": "3605",
-    //   "terrestrial_date": "2023-04-12",
-    //   "sol": "3797",
-    //   "ls": "49",
-    //   "season": "Month 2",
-    //   "min_temp": "-79",
-    //   "max_temp": "-21",
-    //   "pressure": "851",
-    //   "pressure_string": "Higher",
-    //   "abs_humidity": "--",
-    //   "wind_speed": "--",
-    //   "wind_direction": "--",
-    //   "atmo_opacity": "Sunny",
-    //   "sunrise": "06:11",
-    //   "sunset": "17:58",
-    //   "local_uv_irradiance_index": "Moderate",
-    //   "min_gts_temp": "-84",
-    //   "max_gts_temp": "-6"
-    // },
   ]);
 
   const startDate = new Date(new Date().setDate(new Date().getDate() - 14));
@@ -271,9 +251,7 @@ const Weather = ({ weatherData }) => {
         />
         <TemperatureChart temperatureChartData={temperatureChartData} />
       </div>
-      <ul className="flex overflow-x-auto w-full gap-4">
-        {soles}
-      </ul>
+      <ul className="flex overflow-x-auto w-full gap-4">{soles}</ul>
     </section>
   );
 };
