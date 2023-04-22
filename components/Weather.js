@@ -192,7 +192,7 @@ const Weather = ({ weatherData }) => {
       return (
         <li
           key={sol.id}
-          className="hover:outline rounded-md p-4 m-2 cursor-pointer bg-slate-950"
+          className="hover:outline outline-orange-700 rounded-md p-4 m-2 cursor-pointer bg-slate-900"
           onMouseOver={() => selectSol(sol)}
         >
           <ul className="w-64">
