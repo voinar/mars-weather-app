@@ -1,15 +1,3 @@
-// export const getStaticProps = async () => {
-//   const url =
-//     'http://cab.inta-csic.es/rems//wp-content/plugins/marsweather-widget/api.php';
-
-//   const response = await fetch(url);
-//   const data = await response.text();
-
-//   return {
-//     props: { weatherData: data },
-//   };
-// };
-
 import { useState } from 'react';
 
 import { MarsDate } from '/utils/marsdate.js';
