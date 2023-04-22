@@ -24,13 +24,13 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import { addDays, format } from 'date-fns';
-import { DateRange, DayPicker } from 'react-day-picker';
+import { format } from 'date-fns';
+import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
 const TemperatureChart = ({ temperatureChartData }) => {
   return (
-    <div className="h-96 w-full">
+    <div className="w-full h-96">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -38,15 +38,15 @@ const TemperatureChart = ({ temperatureChartData }) => {
           data={temperatureChartData}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            // right: 30,
+            // left: 20,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="1 1" />
           <XAxis dataKey="name" />
-          <YAxis yAxisId="left" domain={[-140, 30]} />
-          <YAxis yAxisId="right" orientation="right" domain={[-140, 30]} />
+          <YAxis yAxisId="left" domain={[-90, 30]} />
+          <YAxis yAxisId="right" orientation="right" domain={[-90, 30]} />
           <Tooltip />
           <Legend />
           <Line
@@ -76,12 +76,12 @@ const Weather = ({ weatherData }) => {
       ground_temperature_sensor: (-84 - 6) / 2,
     },
     {
-      name: `Lowest temperature recorded during sol`,
+      name: `Lowest temperature recorded`,
       air_temperature_sensor: -79,
       ground_temperature_sensor: -21,
     },
     {
-      name: `Highest temperature recorded during sol`,
+      name: `Highest temperature recorded`,
       air_temperature_sensor: -84,
       ground_temperature_sensor: -6,
     },
@@ -223,9 +223,9 @@ const Weather = ({ weatherData }) => {
             <li>
               Pressure: <span>{sol.pressure} pa</span>
             </li>
-            {/* <li>
-            Pressure trend: <span>{sol.pressure_string}</span>
-          </li> */}
+            <li>
+              Pressure trend: <span>{sol.pressure_string}</span>
+            </li>
             <li>
               Season: <span>{sol.season}</span>
             </li>
@@ -248,15 +248,6 @@ const Weather = ({ weatherData }) => {
                 )}
               </span>
             </li>
-            {/* <li>
-            Wind direction: <span>{sol.wind_direction}</span>
-          </li>
-          <li>
-            Wind speed: <span>{sol.wind_speed}</span>
-          </li>
-          <li>
-            Absolute humidity: <span>{sol.abs_humidity}</span>
-          </li> */}
             <span>Id {sol.id}</span>
           </ul>
         </li>
@@ -264,20 +255,35 @@ const Weather = ({ weatherData }) => {
     });
 
   return (
-    <section className="flex pt-28 p-10 md:p-24 min-h-screen flex-col items-center justify-between mt-40">
-      <span className="m-8">Temperature amplitude on sol</span>
+    <section
+      id="graph"
+      className="flex p-10 md:p-24 min-h-screen flex-col items-center justify-between"
+    >
+      <span className="text-5xl font-light text-left w-full mb-12">
+        Temperature amplitude
+      </span>
       <div className="flex flex-col lg:flex-row w-full pb-8">
         <DayPicker
           id="dateRangePicker"
           mode="range"
           defaultMonth={startDate}
           selected={range}
+          disabled={[
+            {
+              from: new Date(
+                new Date().getFullYear(),
+                new Date().getMonth(),
+                new Date().getDate() + 1
+              ),
+              to: new Date(3000, 1, 1),
+            },
+          ]}
           footer={footer}
           onSelect={setRange}
         />
         <TemperatureChart temperatureChartData={temperatureChartData} />
       </div>
-      <ul className="flex pt-28 p-10 md:p-24 md:pt-0 overflow-x-auto w-screen gap-4">
+      <ul className="flex overflow-x-auto w-full gap-4">
         {soles}
       </ul>
     </section>

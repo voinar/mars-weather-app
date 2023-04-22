@@ -33,3 +33,20 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bd5519;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff930e;
+}
