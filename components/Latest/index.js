@@ -10,6 +10,7 @@ import sunsetIcon from '../../public/img/icons/sunset.svg';
 import sunIcon from '../../public/img/icons/sun.svg';
 import cloudsIcon from '../../public/img/icons/clouds.svg';
 import lsIcon from '../../public/img/icons/ls.svg';
+import tempRecordIcon from '../../public/img/icons/tempRecord.svg';
 
 const Latest = ({
   weatherData,
@@ -33,50 +34,70 @@ const Latest = ({
         <span>{weatherDataLatest.terrestrial_date}</span>
       </div>
       <div className="flex flex-col md:flex-row gap-4 justify-around my-24">
-        <div className="flex gap-8">
-          <div className="flex gap-4 flex-col">
-            <div className="flex">
-              <span className="text-5xl lg:text-8xl">
-                {temperatureAsCelsius
-                  ? weatherDataLatest.min_gts_temp
-                  : ((weatherDataLatest.min_gts_temp * 9) / 5 + 32).toFixed()}
-              </span>
-              <Image
-                src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
-                alt="Degrees centigrade"
-                width={30}
-                height={30}
-                className="self-start w-6 lg:w-8"
-              />
+      <div className="flex gap-8">
+          <div className="flex flex-col gap-2">
+            <span className="text-xs lg:text-sm">Ground temperature</span>
+            <div className="flex gap-4">
+              <div className="flex flex-col">
+                <div className="flex">
+                  <span className="text-5xl lg:text-8xl">
+                    {temperatureAsCelsius
+                      ? weatherDataLatest.min_gts_temp
+                      : ((weatherDataLatest.min_gts_temp * 9) / 5 + 32).toFixed()}
+                  </span>
+                  <div className="flex flex-col">
+                    <Image
+                      src={tempRecordIcon}
+                      alt="Lowest recorded temperature"
+                      width={20}
+                      height={20}
+                      className="w-[30px] mb-2 px-2 rotate-180"
+                    />
+                    <Image
+                      src={
+                        temperatureAsCelsius ? centigradeIcon : fahrenheitIcon
+                      }
+                      alt="Degrees centigrade"
+                      width={30}
+                      height={30}
+                      className="self-start w-6 lg:w-8"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex">
+                  <span className="text-5xl lg:text-8xl">
+                    {temperatureAsCelsius
+                      ? weatherDataLatest.max_gts_temp
+                      : ((weatherDataLatest.max_gts_temp * 9) / 5 + 32).toFixed()}
+                  </span>
+                  <div className="flex flex-col">
+                    <Image
+                      src={tempRecordIcon}
+                      alt="Lowest recorded temperature"
+                      width={20}
+                      height={20}
+                      className="w-[30px] mb-2 px-2"
+                    />
+                    <Image
+                      src={
+                        temperatureAsCelsius ? centigradeIcon : fahrenheitIcon
+                      }
+                      alt="Degrees centigrade"
+                      width={30}
+                      height={30}
+                      className="self-start w-6 lg:w-8"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <span className="text-xs lg:text-sm">
-              Lowest ground temperature
-            </span>
-          </div>
-          <div className="flex gap-4 flex-col">
-            <div className="flex">
-              <span className="text-5xl lg:text-8xl">
-                {temperatureAsCelsius
-                  ? weatherDataLatest.max_gts_temp
-                  : ((weatherDataLatest.max_gts_temp * 9) / 5 + 32).toFixed()}
-              </span>
-              <Image
-                src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
-                alt="Degrees centigrade"
-                width={30}
-                height={30}
-                className="self-start w-6 lg:w-8"
-              />
-            </div>
-            <span className="text-xs lg:text-sm">
-              Highest ground temperature
-            </span>
           </div>
         </div>
-        <div className="flex gap-8">
-          <div className="flex-col">
+        <div className="flex flex-col gap-2">
             <span className="text-xs lg:text-sm">Air temperature</span>
-            <div className="flex">
+            <div className="flex gap-4">
               <div className="flex gap-4 flex-col">
                 <div className="flex">
                   <span className="text-5xl lg:text-8xl">
@@ -84,17 +105,25 @@ const Latest = ({
                       ? weatherDataLatest.min_temp
                       : ((weatherDataLatest.min_temp * 9) / 5 + 32).toFixed()}
                   </span>
-                  <Image
-                    src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
-                    alt="Degrees centigrade"
-                    width={30}
-                    height={30}
-                    className="self-start w-6 lg:w-8"
-                  />
+                  <div className="flex flex-col">
+                    <Image
+                      src={tempRecordIcon}
+                      alt="Lowest recorded temperature"
+                      width={20}
+                      height={20}
+                      className="w-[30px] mb-2 px-2 rotate-180"
+                    />
+                    <Image
+                      src={
+                        temperatureAsCelsius ? centigradeIcon : fahrenheitIcon
+                      }
+                      alt="Degrees centigrade"
+                      width={30}
+                      height={30}
+                      className="self-start w-6 lg:w-8"
+                    />
+                  </div>
                 </div>
-                {/* <span className="text-xs lg:text-sm">
-                  Lowest
-                </span> */}
               </div>
               <div className="flex gap-4 flex-col">
                 <div className="flex">
@@ -103,21 +132,28 @@ const Latest = ({
                       ? weatherDataLatest.max_temp
                       : ((weatherDataLatest.max_temp * 9) / 5 + 32).toFixed()}
                   </span>
-                  <Image
-                    src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
-                    alt="Degrees centigrade"
-                    width={30}
-                    height={30}
-                    className="self-start w-6 lg:w-8"
-                  />
+                  <div className="flex flex-col">
+                    <Image
+                      src={tempRecordIcon}
+                      alt="Lowest recorded temperature"
+                      width={20}
+                      height={20}
+                      className="w-[30px] mb-2 px-2"
+                    />
+                    <Image
+                      src={
+                        temperatureAsCelsius ? centigradeIcon : fahrenheitIcon
+                      }
+                      alt="Degrees centigrade"
+                      width={30}
+                      height={30}
+                      className="self-start w-6 lg:w-8"
+                    />
+                  </div>
                 </div>
-                {/* <span className="text-xs lg:text-sm">
-                  Highest
-                </span> */}
               </div>
             </div>
           </div>
-        </div>
       </div>
       <div className="flex justify-between">
         <div className="flex flex-col justify-around text-3xl gap-4">

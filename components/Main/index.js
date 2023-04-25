@@ -12,6 +12,7 @@ import uvIcon from '../../public/img/icons/uv.svg';
 import sunriseIcon from '../../public/img/icons/sunrise.svg';
 import sunsetIcon from '../../public/img/icons/sunset.svg';
 
+
 const Main = ({ weatherData, temperatureAsCelsius }) => {
   const weatherDataLatest = JSON.parse(weatherData).soles[0];
   console.log(new MarsDate(new Date(weatherDataLatest.terrestrial_date)));
@@ -19,17 +20,16 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
   return (
     <main
       id="home"
-      className="relative h-screen flex-col pt-28 p-10 md:p-24  text-red-50 bg-hero_background_mobile bg-cover md:bg-hero_background md:bg-cover bg-opacity-100 font-thin"
+      className="relative h-screen flex-col pt-28 p-10 md:p-24 text-red-50 bg-hero_background_mobile bg-cover md:bg-hero_background md:bg-cover bg-opacity-100 font-thin"
     >
-      <div className="absolute w-full h-screen top-0 left-0 bg-gradient-to-t from-orange-900 to-black mix-blend-lighten md:bg-gradient-to-r md:from-transparent md:to-orange-900 md:mix-blend-lighten"></div>
-      <header className="flex flex-col w-full md:h-full">
+      <header className="flex flex-col absolute w-full md:h-full top-0 left-0 h-screen pt-28 p-10 md:p-24 bg-gradient-to-t from-orange-900 to-black mix-blend-lighten md:bg-gradient-to-r md:from-transparent md:to-orange-900 md:mix-blend-lighten">
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-light md:font-thin">
           Mars <br /> Weather <br /> Stream
         </h1>
         <div className="flex mt-20 md:mt-auto">
           <div className="flex flex-col lg:flex-row gap-6 md:gap-10 justify-end">
             <div className="flex-col mt-auto">
-              <Link href="#latest" scroll={false}>
+              <Link href="#latest" scroll={false} className="cursor-pointer">
                 <div className="flex gap-2">
                   <Image src={calendarIcon} alt="Dates" />
                   <span>Sol: {weatherDataLatest.sol}</span>
@@ -73,6 +73,7 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                     src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
                     alt="Degrees centigrade"
                     width={30}
+                    height={30}
                     className="self-start"
                   />
                 </div>
@@ -102,12 +103,12 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                     src={temperatureAsCelsius ? centigradeIcon : fahrenheitIcon}
                     alt="Degrees centigrade"
                     width={30}
+                    height={30}
                     className="self-start"
                   />
                 </div>
               </div>
             </div>
-
             <div className="mt-auto">
               <Image
                 src={
