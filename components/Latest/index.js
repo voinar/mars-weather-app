@@ -58,23 +58,25 @@ const Latest = ({
       }
     };
 
-    const temperatureGauge = () => {
+    const temperatureGauge = (minMax) => {
       if (temperatureAsCelsius) {
         return (
-          <div className="flex flex-col">
-            <Image
-              src={tempRecordIcon}
-              alt="Highest recorded temperature"
-              width={20}
-              height={20}
-              className="w-[30px] mb-2 px-2"
-            />
+          <div className="flex flex-col gap-1 md:gap-2">
+            <div className={minMax === 'min' ? 'rotate-180' : ''}>
+              <Image
+                src={tempRecordIcon}
+                alt="Highest recorded temperature"
+                width={20}
+                height={20}
+                className="mb-0 px-1 md:px-1 w-5 lg:w-8"
+              />
+            </div>
             <Image
               src={centigradeIcon}
               alt="Degrees centigrade"
               width={30}
               height={30}
-              className="self-start w-6 lg:w-8"
+              className="self-start w-5 lg:w-8"
             />
           </div>
         );
@@ -109,7 +111,7 @@ const Latest = ({
               <span className="text-5xl lg:text-8xl">
                 {displayMinTemperature()}
               </span>
-              {temperatureGauge()}
+              {temperatureGauge('min')}
             </div>
           </div>
           <div className="flex flex-col">
@@ -117,7 +119,7 @@ const Latest = ({
               <span className="text-5xl lg:text-8xl">
                 {displayMaxTemperature()}
               </span>
-              {temperatureGauge()}
+              {temperatureGauge('max')}
             </div>
           </div>
         </div>

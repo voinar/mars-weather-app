@@ -1,0 +1,22 @@
+{
+  "heroHeader": {
+    "en": "Get real-time updates on the weather conditions on the red planet, with data sourced directly from NASA's Curiosity Rover.",
+    "pl": "TBA"
+  },
+  "solNumber": {
+    "en": "A Martian sol (short for 'solar day') is the equivalent of a day on Mars, which is slightly longer than a day on Earth. The number displayed here is the number of solar days since the start of Curiosity's mission.",
+    "pl": "TBA"
+  },
+  "latestUpdateDate": {
+    "en": "The date of the latest update from Curiosity. The latest data is usually fetched every 4-7 days.",
+    "pl": "TBA"
+  },
+  "season": {
+    "en": "Mars has four seasons just like Earth, but they last about twice as long. That's because it takes about two Earth years for Mars to go around the Sun.",
+    "pl": "TBA"
+  },
+  "marsDate": {
+    "en": "Earth date converted to Darian Calendar. The year is divided into 24 months. Each month has 4 weeks. Each week has 7 days: Sol, Luna, Mars, Mercurius, Jupiter, Venus, Saturnus.",
+    "pl": "TBA"
+  }
+}
