@@ -12,109 +12,13 @@ import pressureIcon from '../../public/img/icons/pressure.svg';
 import uvIcon from '../../public/img/icons/uv.svg';
 import sunriseIcon from '../../public/img/icons/sunrise.svg';
 import sunsetIcon from '../../public/img/icons/sunset.svg';
-import tooltipContent from '../../data/tooltipContent.json';
-// import {Tooltip, toggleTooltip} from '../../components/Tooltip';
 
-const Main = ({ weatherData, temperatureAsCelsius }) => {
+const Main = ({ weatherData, temperatureAsCelsius, toggleTooltip }) => {
   const weatherDataLatest = JSON.parse(weatherData).soles[0];
   // console.log(new MarsDate(new Date(weatherDataLatest.terrestrial_date)));
 
-  const [showTooltip, setShowTooltip] = useState({
-    tooltipVisibility: false,
-    tooltipText: 'tooltip content',
-  });
-
-  const useMousePosition = () => {
-    const [mousePosition, setMousePosition] = useState({ x: null, y: null });
-
-    useEffect(() => {
-      const updateMousePosition = (ev) => {
-        setMousePosition({ x: ev.clientX, y: ev.clientY });
-      };
-
-      window.addEventListener('mousemove', updateMousePosition);
-
-      return () => {
-        window.removeEventListener('mousemove', updateMousePosition);
-      };
-    }, []);
-
-    return mousePosition;
-  };
-
-  const mousePosition = useMousePosition();
-
-  const toggleTooltip = (hoverArea) => {
-    switch (hoverArea) {
-      case 'heroHeader':
-        setShowTooltip({
-          tooltipVisibility: true,
-          tooltipText: tooltipContent.heroHeader.en,
-        });
-        break;
-      case 'solNumber':
-        setShowTooltip({
-          tooltipVisibility: true,
-          tooltipText: tooltipContent.solNumber.en,
-        });
-        break;
-      case 'latestUpdateDate':
-        setShowTooltip({
-          tooltipVisibility: true,
-          tooltipText: tooltipContent.latestUpdateDate.en,
-        });
-        break;
-      case 'season':
-        setShowTooltip({
-          tooltipVisibility: true,
-          tooltipText: tooltipContent.season.en,
-        });
-        break;
-      case 'marsDate':
-        setShowTooltip({
-          tooltipVisibility: true,
-          tooltipText: tooltipContent.marsDate.en,
-        });
-        break;
-      case 'default':
-        setShowTooltip({
-          tooltipVisibility: false,
-          tooltipText: '',
-        });
-        break;
-      default:
-        setShowTooltip({
-          tooltipVisibility: false,
-          tooltipText: '',
-        });
-    }
-  };
-
-  const Tooltip = ({ showTooltip, mousePosition }) => {
-    return (
-      <div
-        className="absolute z-10 border border-dotted border-orange-700 px-4 py-2 ml-4 mt-4
-        min-h-fit
-        w-96 min-w-[calc(10%+2rem)]
-        rounded-xl backdrop-blur-lg shadow-xl text-sm"
-        style={
-          showTooltip.tooltipVisibility
-            ? {
-                display: 'visible',
-                top: mousePosition.y,
-                left: mousePosition.x,
-              }
-            : { display: 'none' }
-        }
-      >
-        {showTooltip.tooltipText}
-      </div>
-    );
-  };
-
   return (
     <>
-      <Tooltip showTooltip={showTooltip} mousePosition={mousePosition} />
       <main
         id="home"
         className="relative h-screen flex-col pt-28 p-10 md:p-24 text-red-50 bg-hero_background_mobile bg-cover md:bg-hero_background md:bg-cover bg-opacity-100 font-thin"
@@ -165,7 +69,11 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                 </div>
               </Link>
               <div className="text-7xl font-light md:font-medium mt-6">
-                <div className="flex">
+                <div
+                  className="flex"
+                  onMouseEnter={() => toggleTooltip('airAverageTemperature')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image
                     src={airIcon}
                     alt="Temperature at 2m above ground"
@@ -195,7 +103,11 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                     className="self-start"
                   />
                 </div>
-                <div className="flex">
+                <div
+                  className="flex"
+                  onMouseEnter={() => toggleTooltip('groundAverageTemperature')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image
                     src={groundIcon}
                     alt="Ground temperature"
@@ -237,15 +149,25 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                 width={140}
                 height={140}
                 className="hidden lg:flex"
+                onMouseEnter={() => toggleTooltip('atmoOpacity')}
+                onMouseLeave={() => toggleTooltip('default')}
               />
               <div className="flex mt-2">
-                <div className="flex w-28 gap-2">
+                <div
+                  className="flex w-28 gap-2"
+                  onMouseEnter={() => toggleTooltip('pressure')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image src={pressureIcon} alt="Ground pressure" height={28} />
                   <span className="flex items-center">
                     {weatherDataLatest.pressure} Pa
                   </span>
                 </div>
-                <div className="flex w-28 gap-2">
+                <div
+                  className="flex w-28 gap-2"
+                  onMouseEnter={() => toggleTooltip('localUvIndex')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image src={uvIcon} alt="Ultraviolet radiation" height={28} />
                   <span className="flex items-center">
                     {weatherDataLatest.local_uv_irradiance_index}
@@ -253,13 +175,21 @@ const Main = ({ weatherData, temperatureAsCelsius }) => {
                 </div>
               </div>
               <div className="flex mt-2">
-                <div className="flex w-28 gap-2">
+                <div
+                  className="flex w-28 gap-2"
+                  onMouseEnter={() => toggleTooltip('sunrise')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image src={sunriseIcon} alt="Sunrise" height={28} />
                   <span className="flex items-center">
                     {weatherDataLatest.sunrise}
                   </span>
                 </div>
-                <div className="flex w-28 gap-2">
+                <div
+                  className="flex w-28 gap-2"
+                  onMouseEnter={() => toggleTooltip('sunset')}
+                  onMouseLeave={() => toggleTooltip('default')}
+                >
                   <Image src={sunsetIcon} alt="Sunset" height={28} />
                   <span className="flex items-center">
                     {weatherDataLatest.sunset}

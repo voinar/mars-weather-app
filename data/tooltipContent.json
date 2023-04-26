@@ -8,7 +8,7 @@
     "pl": "TBA"
   },
   "latestUpdateDate": {
-    "en": "The date of the latest update from Curiosity. The latest data is usually fetched every 4-7 days.",
+    "en": "The date of the latest update from Curiosity. Data is usually fetched every 4-7 days. Update frequency depends on the capacity of NASA's Deep Space Network.",
     "pl": "TBA"
   },
   "season": {
@@ -17,6 +17,34 @@
   },
   "marsDate": {
     "en": "Earth date converted to Darian Calendar. The year is divided into 24 months. Each month has 4 weeks. Each week has 7 days: Sol, Luna, Mars, Mercurius, Jupiter, Venus, Saturnus.",
+    "pl": "TBA"
+  },
+  "airAverageTemperature": {
+    "en": "Mast sensor data. Mast sensor is installed 2,20m above ground. Mars atmosphere is extremely thin, so the temperature tends to drop sharply with elevation. The temperature shown here is the calculated avarage of highest and lowest temperature recorded during the last sol. Scroll down for more detailed measurements.",
+    "pl": "TBA"
+  },
+  "groundAverageTemperature": {
+    "en": "Ground level sensor data. Mars atmosphere is extremely thin, so the temperature tends to drop sharply with elevation. The temperature shown here is the calculated avarage of highest and lowest temperature recorded during the last sol. Scroll down for more detailed measurements.",
+    "pl": "TBA"
+  },
+  "atmoOpacity": {
+    "en": "Visibility conditions in Martian atmosphere. Apart from the usual 'Sunny' days Mars atmosphere conditions can be influenced by dust storms or clouds of water ice.",
+    "pl": "TBA"
+  },
+  "pressure": {
+    "en": "The atmospheric pressure on Mars is much lower than Earth's. The average surface pressure on Mars is about 6.1 millibars (0.087 psi), which is only about 1% of Earth's atmospheric pressure at sea level. ",
+    "pl": "TBA"
+  },
+  "localUvIndex": {
+    "en": "The surface of Mars is exposed to high levels of ultraviolet (UV) radiation from the Sun. This is because Mars has a much thinner atmosphere than Earth, which means that there is less protection from the Sun's harmful UV rays.",
+    "pl": "TBA"
+  },
+  "sunrise": {
+    "en": "The timing of sunrise and sunset on Mars changes significantly throughout the Martian year. During the Martian summer, the sun can be up for as long as 24.6 hours at the equator, while during the Martian winter, the sun may only be up for 4.7 hours at the poles.",
+    "pl": "TBA"
+  },
+  "sunset": {
+    "en": "The timing of sunrise and sunset on Mars changes significantly throughout the Martian year. During the Martian summer, the sun can be up for as long as 24.6 hours at the equator, while during the Martian winter, the sun may only be up for 4.7 hours at the poles.",
     "pl": "TBA"
   }
 }

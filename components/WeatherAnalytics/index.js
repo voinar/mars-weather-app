@@ -40,12 +40,12 @@ const WeatherAnalytics = ({ weatherData }) => {
         ground_temperature_sensor: (sol.min_gts_temp - sol.max_gts_temp) / 2,
       },
       {
-        name: `Lowest temperature recorded during sol`,
+        name: `Lowest temperature recorded`,
         air_temperature_sensor: sol.min_temp,
         ground_temperature_sensor: sol.min_gts_temp,
       },
       {
-        name: `Highest temperature recorded during sol`,
+        name: `Highest temperature recorded`,
         air_temperature_sensor: sol.max_temp,
         ground_temperature_sensor: sol.max_gts_temp,
       },
