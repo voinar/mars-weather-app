@@ -64,21 +64,24 @@ const WeatherAnalytics = ({ weatherData, toggleTooltip }) => {
   return (
     <section
       id="analytics"
-      className="flex p-10 md:p-24 min-h-screen flex-col items-center justify-between"
+      className="flex flex-col  p-10 md:p-24 min-h-screen items-center justify-between cursor-default"
     >
       <div
-        className="flex mb-10 gap-2 text-3xl font-thin mr-auto"
+        class="relative mr-auto mb-10"
         onMouseEnter={() => toggleTooltip('tempAmplitude')}
         onMouseLeave={() => toggleTooltip('default')}
       >
-        <Image
-          src={temperatureIcon}
-          alt="Temperatures"
-          width={40}
-          height={40}
-          className="self-start"
-        />
-        Temperature amplitude
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-900 to-pink-900 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <div class="relative flex gap-2 text-3xl font-thin px-7 py-4 bg-stone-950 rounded-lg">
+          <Image
+            src={temperatureIcon}
+            alt="Temperatures"
+            width={40}
+            height={40}
+            className="self-start"
+          />
+          <span>Temperature amplitude</span>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full pb-8">

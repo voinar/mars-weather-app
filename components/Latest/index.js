@@ -17,18 +17,25 @@ const Latest = ({
   toggleTooltip,
 }) => {
   return (
-    <section id="latest" className="pt-28 p-10 md:p-24 text-3xl font-thin">
-      <div className="flex mb-10 gap-2">
-        <Image
-          src={calendarIcon}
-          alt="Temperatures"
-          width={40}
-          height={40}
-          className="self-start"
-        />
-        <span>Temperatures recorded on Sol {weatherDataLatest.sol}</span>
-        <span>|</span>
-        <span>{weatherDataLatest.terrestrial_date}</span>
+    <section id="latest" className="pt-28 p-10 md:p-24 text-3xl font-thin cursor-default">
+      <div
+        class="relative max-w-fit group"
+        onMouseEnter={() => toggleTooltip('latestUpdateDate')}
+        onMouseLeave={() => toggleTooltip('default')}
+      >
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-900 to-pink-900 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <div class="relative flex mb-10 gap-2 px-7 py-4 bg-stone-950 rounded-lg">
+          <Image
+            src={calendarIcon}
+            alt="Temperatures"
+            width={40}
+            height={40}
+            className="self-start"
+          />
+          <span>Temperatures recorded on Sol {weatherDataLatest.sol}</span>
+          <span>|</span>
+          <span>{weatherDataLatest.terrestrial_date}</span>
+        </div>
       </div>
       <div className="flex flex-col md:flex-row gap-4 justify-around my-24">
         <TemperatureSensor

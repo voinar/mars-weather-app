@@ -31,7 +31,7 @@ const Soles = ({ weatherDataSoles, range, selectSol }) =>
       return (
         <li
           key={sol.id}
-          className="hover:outline outline-orange-700 rounded-md p-4 m-2 cursor-pointer bg-slate-900"
+          className="rounded-md p-4 m-2 cursor-pointer"
           onMouseOver={() => selectSol(sol)}
         >
           <SolCard sol={sol} />

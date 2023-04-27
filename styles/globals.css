@@ -13,8 +13,8 @@ html {
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 40, 10, 10;
-  --background-end-rgb: 10, 10, 0;
+  --background-start-rgb: 10, 5, 0;
+  --background-end-rgb: 20, 5, 10;
 }
 
 /* @media (prefers-color-scheme: dark) {
