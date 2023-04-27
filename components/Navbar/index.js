@@ -14,18 +14,33 @@ const Navbar = ({ temperatureAsCelsius, setTemperatureAsCelsius }) => (
         </Link>
       </li>
       <li>
-        <Link href="#gallery" scroll={false}>
+        <Link href="#analytics" scroll={false}>
+          Analytics
+        </Link>
+      </li>
+      <li>
+        <Link href="#" scroll={false}>
+          News
+        </Link>
+      </li>
+      <li>
+        <Link href="#" scroll={false}>
           Gallery
         </Link>
       </li>
       <li>
+        <Link href="#" scroll={false}>
+          About
+        </Link>
+      </li>
+      <li className="border"></li>
+      <li>
         <button
           onClick={() => setTemperatureAsCelsius((prevState) => !prevState)}
         >
-          {temperatureAsCelsius ? 'Celsius' : 'Fahrenheit'}
+          {temperatureAsCelsius ? "'C" : "'F"}
         </button>
       </li>
-      <li>About</li>
     </ul>
   </nav>
 );

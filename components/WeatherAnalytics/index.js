@@ -63,7 +63,7 @@ const WeatherAnalytics = ({ weatherData, toggleTooltip }) => {
 
   return (
     <section
-      id="graph"
+      id="analytics"
       className="flex p-10 md:p-24 min-h-screen flex-col items-center justify-between"
     >
       <div

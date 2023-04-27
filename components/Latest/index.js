@@ -1,4 +1,4 @@
-import TemperaturesSensor from '../TemperaturesSensor';
+import TemperatureSensor from '../TemperatureSensor';
 import Image from 'next/image';
 import calendarIcon from '../../public/img/icons/calendar.svg';
 import uvIcon from '../../public/img/icons/uv.svg';
@@ -31,14 +31,14 @@ const Latest = ({
         <span>{weatherDataLatest.terrestrial_date}</span>
       </div>
       <div className="flex flex-col md:flex-row gap-4 justify-around my-24">
-        <TemperaturesSensor
+        <TemperatureSensor
           sensorType={'groundTemperatureSensor'}
           temperatureAsCelsius={temperatureAsCelsius}
           setTemperatureAsCelsius={setTemperatureAsCelsius}
           weatherDataLatest={weatherDataLatest}
           toggleTooltip={toggleTooltip}
         />
-        <TemperaturesSensor
+        <TemperatureSensor
           sensorType={'airTemperatureSensor'}
           temperatureAsCelsius={temperatureAsCelsius}
           setTemperatureAsCelsius={setTemperatureAsCelsius}
