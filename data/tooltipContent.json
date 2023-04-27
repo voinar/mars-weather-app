@@ -46,5 +46,13 @@
   "sunset": {
     "en": "The timing of sunrise and sunset on Mars changes significantly throughout the Martian year. During the Martian summer, the sun can be up for as long as 24.6 hours at the equator, while during the Martian winter, the sun may only be up for 4.7 hours at the poles.",
     "pl": "TBA"
+  },
+  "lowestTempRecorded": {
+    "en": "The lowest temperature recorded during sol.",
+    "pl": "TBA"
+  },
+  "highestTempRecorded": {
+    "en": "The highest temperature recorded during sol.",
+    "pl": "TBA"
   }
 }

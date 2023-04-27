@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
@@ -5,6 +6,7 @@ import 'react-day-picker/dist/style.css';
 import TemperatureChart from '../TemperatureChart';
 import Soles from '../Soles';
 import defaultTemperatureChartData from './defaultTemperatureChartData';
+import temperatureIcon from '../../public/img/icons/temperature.svg';
 
 const WeatherAnalytics = ({ weatherData }) => {
   const [temperatureChartData, setTemperatureChartData] = useState(
@@ -64,9 +66,17 @@ const WeatherAnalytics = ({ weatherData }) => {
       id="graph"
       className="flex p-10 md:p-24 min-h-screen flex-col items-center justify-between"
     >
-      <span className="text-5xl font-light text-left w-full mb-12">
+      <div className="flex mb-10 gap-2 text-3xl font-thin mr-auto">
+        <Image
+          src={temperatureIcon}
+          alt="Temperatures"
+          width={40}
+          height={40}
+          className="self-start"
+        />
         Temperature amplitude
-      </span>
+      </div>
+
       <div className="flex flex-col lg:flex-row w-full pb-8">
         <DayPicker
           id="dateRangePicker"

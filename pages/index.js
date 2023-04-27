@@ -24,56 +24,11 @@ export const getStaticProps = async () => {
 const Home = ({ weatherData }) => {
   const [temperatureAsCelsius, setTemperatureAsCelsius] = useState(true);
   const { showTooltip, setShowTooltip, toggleTooltip } = useTooltip();
-
-  // const Tooltip = ({ showTooltip }) => {
-  //   const useMousePosition = () => {
-  //     const [mousePosition, setMousePosition] = useState({
-  //       x: -10000,
-  //       y: -10000,
-  //     });
-
-  //     useEffect(() => {
-  //       const updateMousePosition = (ev) => {
-  //         setMousePosition({ x: ev.clientX, y: ev.clientY });
-  //       };
-
-  //       window.addEventListener('mousemove', updateMousePosition);
-
-  //       return () => {
-  //         window.removeEventListener('mousemove', updateMousePosition);
-  //       };
-  //     }, []);
-
-  //     return mousePosition;
-  //   };
-
-  //   const mousePosition = useMousePosition();
-
-  //   return (
-  //     <div
-  //       className="absolute z-10 border border-dotted border-orange-700 px-4 py-2 ml-4 mt-4
-  //       min-h-fit
-  //       w-96 min-w-[calc(10%+2rem)]
-  //       rounded-xl backdrop-blur-lg shadow-xl text-sm"
-  //       style={
-  //         showTooltip.tooltipVisibility
-  //           ? {
-  //               display: 'visible',
-  //               top: mousePosition.y,
-  //               left: mousePosition.x,
-  //             }
-  //           : { display: 'none' }
-  //       }
-  //     >
-  //       {showTooltip.tooltipText}
-  //     </div>
-  //   );
-  // };
+  const weatherDataLatest = JSON.parse(weatherData).soles[0];
 
   return (
     <>
       <Tooltip showTooltip={showTooltip} />
-
       <Navbar
         temperatureAsCelsius={temperatureAsCelsius}
         setTemperatureAsCelsius={setTemperatureAsCelsius}
@@ -85,14 +40,15 @@ const Home = ({ weatherData }) => {
         toggleTooltip={toggleTooltip}
       />
       <Latest
-        weatherData={weatherData}
+        weatherDataLatest={weatherDataLatest}
         temperatureAsCelsius={temperatureAsCelsius}
         setTemperatureAsCelsius={setTemperatureAsCelsius}
+        toggleTooltip={toggleTooltip}
       />
       <WeatherAnalytics
         weatherData={weatherData}
         temperatureAsCelsius={temperatureAsCelsius}
-        setTemperatureAsCelsius={setTemperatureAsCelsius}
+        toggleTooltip={toggleTooltip}
       />
     </>
   );

@@ -81,6 +81,18 @@ const useTooltip = () => {
           tooltipText: tooltipContent.sunset.en,
         });
         break;
+      case 'lowestTempRecorded':
+        setShowTooltip({
+          tooltipVisibility: true,
+          tooltipText: tooltipContent.lowestTempRecorded.en,
+        });
+        break;
+      case 'highestTempRecorded':
+        setShowTooltip({
+          tooltipVisibility: true,
+          tooltipText: tooltipContent.highestTempRecorded.en,
+        });
+        break;
       case 'default':
         setShowTooltip({
           tooltipVisibility: false,
