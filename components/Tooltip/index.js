@@ -33,8 +33,7 @@ const Tooltip = ({ showTooltip }) => {
   return (
     <div
       className="absolute z-10 border border-dotted border-orange-700 px-4 py-2 ml-4 mt-4
-      min-h-fit
-      w-96 min-w-[calc(10%+2rem)]
+      min-h-fit min-w-[200px] max-w-[300px]
       rounded-xl backdrop-blur-lg shadow-xl text-sm"
       style={
         showTooltip.tooltipVisibility

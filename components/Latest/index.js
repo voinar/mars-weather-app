@@ -48,7 +48,11 @@ const Latest = ({
       </div>
       <div className="flex justify-between">
         <div className="flex flex-col justify-around text-3xl gap-4">
-          <div className="flex gap-4">
+          <div
+            className="flex gap-4"
+            onMouseEnter={() => toggleTooltip('atmoOpacity')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
             <Image
               src={
                 (weatherDataLatest.atmo_opacity === 'Sunny' && sunIcon) ||
@@ -60,26 +64,46 @@ const Latest = ({
             />
             <span>{weatherDataLatest.atmo_opacity}</span>
           </div>
-          <div className="flex gap-4">
-            <Image src={pressureIcon} alt="Sky" width={40} />
+          <div
+            className="flex gap-4"
+            onMouseEnter={() => toggleTooltip('pressure')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
+            <Image src={pressureIcon} alt="Pressure" width={40} />
             <span>{weatherDataLatest.pressure} Pa</span>
           </div>
-          <div className="text-3xl flex gap-4">
-            <Image src={uvIcon} alt="Sky" width={40} />
+          <div
+            className="text-3xl flex gap-4"
+            onMouseEnter={() => toggleTooltip('localUvIndex')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
+            <Image src={uvIcon} alt="Local UV index" width={40} />
             <span>{weatherDataLatest.local_uv_irradiance_index}</span>
           </div>
-          <div className="text-3xl flex gap-4">
-            <Image src={sunriseIcon} alt="Sky" width={40} />
+          <div
+            className="text-3xl flex gap-4"
+            onMouseEnter={() => toggleTooltip('sunrise')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
+            <Image src={sunriseIcon} alt="Sunrise Time" width={40} />
             <span>Sunrise at:</span>{' '}
             <span className="text-4xl">{weatherDataLatest.sunrise}</span>
           </div>
-          <div className="text-3xl flex gap-4">
-            <Image src={sunsetIcon} alt="Sky" width={40} />
+          <div
+            className="text-3xl flex gap-4"
+            onMouseEnter={() => toggleTooltip('sunset')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
+            <Image src={sunsetIcon} alt="Sunset Time" width={40} />
             <span>Sunset at:</span>{' '}
             <span className="text-4xl">{weatherDataLatest.sunset}</span>
           </div>
-          <div className="text-3xl flex gap-4">
-            <Image src={lsIcon} alt="Sky" width={40} />
+          <div
+            className="text-3xl flex gap-4"
+            onMouseEnter={() => toggleTooltip('solarLongitude')}
+            onMouseLeave={() => toggleTooltip('default')}
+          >
+            <Image src={lsIcon} alt="Solar Longitude" width={40} />
             <span>Solar longitude:</span>
             <span className="text-4xl">{weatherDataLatest.ls}</span>
           </div>
@@ -93,6 +117,8 @@ const Latest = ({
           width={300}
           height={300}
           className="hidden lg:flex"
+          onMouseEnter={() => toggleTooltip('atmoOpacity')}
+          onMouseLeave={() => toggleTooltip('default')}
         />
       </div>
     </section>

@@ -93,6 +93,18 @@ const useTooltip = () => {
           tooltipText: tooltipContent.highestTempRecorded.en,
         });
         break;
+      case 'solarLongitude':
+        setShowTooltip({
+          tooltipVisibility: true,
+          tooltipText: tooltipContent.solarLongitude.en,
+        });
+        break;
+      case 'tempAmplitude':
+        setShowTooltip({
+          tooltipVisibility: true,
+          tooltipText: tooltipContent.tempAmplitude.en,
+        });
+        break;
       case 'default':
         setShowTooltip({
           tooltipVisibility: false,

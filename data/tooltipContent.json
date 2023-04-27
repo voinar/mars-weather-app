@@ -8,7 +8,7 @@
     "pl": "TBA"
   },
   "latestUpdateDate": {
-    "en": "The date of the latest update from Curiosity. Data is usually fetched every 4-7 days. Update frequency depends on the capacity of NASA's Deep Space Network.",
+    "en": "The date of the latest update from Curiosity. Data is usually fetched every 3-7 days. Update frequency varies depending on the capacity of NASA's Deep Space Network.",
     "pl": "TBA"
   },
   "season": {
@@ -53,6 +53,14 @@
   },
   "highestTempRecorded": {
     "en": "The highest temperature recorded during sol.",
+    "pl": "TBA"
+  },
+  "solarLongitude": {
+    "en": "Solar longitude on Mars is a measure of the position of the planet in its orbit around the Sun, expressed in degrees. It is often used by scientists to track seasonal changes on the planet and to coordinate observations by spacecraft and rovers.",
+    "pl": "TBA"
+  },
+  "tempAmplitude": {
+    "en": "Select range of dates and analyze the fluctuations in temperature measurements.",
     "pl": "TBA"
   }
 }

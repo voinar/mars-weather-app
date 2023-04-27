@@ -8,7 +8,7 @@ import Soles from '../Soles';
 import defaultTemperatureChartData from './defaultTemperatureChartData';
 import temperatureIcon from '../../public/img/icons/temperature.svg';
 
-const WeatherAnalytics = ({ weatherData }) => {
+const WeatherAnalytics = ({ weatherData, toggleTooltip }) => {
   const [temperatureChartData, setTemperatureChartData] = useState(
     defaultTemperatureChartData
   );
@@ -66,7 +66,11 @@ const WeatherAnalytics = ({ weatherData }) => {
       id="graph"
       className="flex p-10 md:p-24 min-h-screen flex-col items-center justify-between"
     >
-      <div className="flex mb-10 gap-2 text-3xl font-thin mr-auto">
+      <div
+        className="flex mb-10 gap-2 text-3xl font-thin mr-auto"
+        onMouseEnter={() => toggleTooltip('tempAmplitude')}
+        onMouseLeave={() => toggleTooltip('default')}
+      >
         <Image
           src={temperatureIcon}
           alt="Temperatures"
