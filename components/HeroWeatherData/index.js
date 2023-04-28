@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MarsDate } from '/utils/marsdate.js';
-import calendarIcon from '../../public/img/icons/calendar.svg';
-import airIcon from '../../public/img/icons/air.svg';
-import centigradeIcon from '../../public/img/icons/centigrade.svg';
-import fahrenheitIcon from '../../public/img/icons/fahrenheit.svg';
-import groundIcon from '../../public/img/icons/ground.svg';
-import sunIcon from '../../public/img/icons/sun.svg';
-import pressureIcon from '../../public/img/icons/pressure.svg';
-import uvIcon from '../../public/img/icons/uv.svg';
-import sunriseIcon from '../../public/img/icons/sunrise.svg';
-import sunsetIcon from '../../public/img/icons/sunset.svg';
+import calendarIcon from '@/public/img/icons/calendar.svg';
+import airIcon from '@/public/img/icons/air.svg';
+import centigradeIcon from '@/public/img/icons/centigrade.svg';
+import fahrenheitIcon from '@/public/img/icons/fahrenheit.svg';
+import groundIcon from '@/public/img/icons/ground.svg';
+import sunIcon from '@/public/img/icons/sun.svg';
+import pressureIcon from '@/public/img/icons/pressure.svg';
+import uvIcon from '@/public/img/icons/uv.svg';
+import sunriseIcon from '@/public/img/icons/sunrise.svg';
+import sunsetIcon from '@/public/img/icons/sunset.svg';
 
 const HeroWeatherData = ({
   weatherDataLatest,

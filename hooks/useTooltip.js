@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import tooltipContent from '../data/tooltipContent.json';
+import { useState } from 'react';
+import tooltipContent from '@/data/tooltipContent.json';
 
 const useTooltip = () => {
   const [showTooltip, setShowTooltip] = useState({

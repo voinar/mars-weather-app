@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import centigradeIcon from '../../public/img/icons/centigrade.svg';
-import fahrenheitIcon from '../../public/img/icons/fahrenheit.svg';
-import tempRecordIcon from '../../public/img/icons/tempRecord.svg';
+import centigradeIcon from '@/public/img/icons/centigrade.svg';
+import fahrenheitIcon from '@/public/img/icons/fahrenheit.svg';
+import tempRecordIcon from '@/public/img/icons/tempRecord.svg';
 
 const TemperatureGauge = ({
   minMax,

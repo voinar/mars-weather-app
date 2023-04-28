@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import TemperatureChart from '../TemperatureChart';
-import Soles from '../Soles';
+import TemperatureChart from '@/components/TemperatureChart';
+import Soles from '@/components/Soles';
+import temperatureIcon from '@/public/img/icons/temperature.svg';
 import defaultTemperatureChartData from './defaultTemperatureChartData';
-import temperatureIcon from '../../public/img/icons/temperature.svg';
 
 const WeatherAnalytics = ({ weatherData, toggleTooltip }) => {
   const [temperatureChartData, setTemperatureChartData] = useState(

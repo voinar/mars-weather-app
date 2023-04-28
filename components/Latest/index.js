@@ -1,14 +1,14 @@
-import TemperatureSensor from '../TemperatureSensor';
+import TemperatureSensor from '@/components/TemperatureSensor';
 import Image from 'next/image';
-import calendarIcon from '../../public/img/icons/calendar.svg';
-import uvIcon from '../../public/img/icons/uv.svg';
-import pressureIcon from '../../public/img/icons/pressure.svg';
-import sunriseIcon from '../../public/img/icons/sunrise.svg';
-import sunsetIcon from '../../public/img/icons/sunset.svg';
-import sunIcon from '../../public/img/icons/sun.svg';
-import cloudsIcon from '../../public/img/icons/clouds.svg';
-import dustIcon from '../../public/img/icons/dust.svg';
-import lsIcon from '../../public/img/icons/ls.svg';
+import calendarIcon from '@/public/img/icons/calendar.svg';
+import uvIcon from '@/public/img/icons/uv.svg';
+import pressureIcon from '@/public/img/icons/pressure.svg';
+import sunriseIcon from '@/public/img/icons/sunrise.svg';
+import sunsetIcon from '@/public/img/icons/sunset.svg';
+import sunIcon from '@/public/img/icons/sun.svg';
+import cloudsIcon from '@/public/img/icons/clouds.svg';
+import dustIcon from '@/public/img/icons/dust.svg';
+import lsIcon from '@/public/img/icons/ls.svg';
 
 const Latest = ({
   weatherDataLatest,

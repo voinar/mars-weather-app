@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import SolCard from '../SolCard'
+import SolCard from '@/components/SolCard'
 
 const Soles = ({ weatherDataSoles, range, selectSol }) =>
   weatherDataSoles

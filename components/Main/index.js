@@ -1,4 +1,4 @@
-import HeroWeatherData from '../HeroWeatherData';
+import HeroWeatherData from '@/components/HeroWeatherData';
 import Link from 'next/link';
 
 const Main = ({

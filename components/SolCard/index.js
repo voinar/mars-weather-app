@@ -1,4 +1,4 @@
-import { MarsDate } from '/utils/marsdate.js';
+import { MarsDate } from '@/utils/marsdate.js';
 
 const SolCard = ({ sol }) => (
   <>
