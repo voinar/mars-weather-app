@@ -25,6 +25,7 @@ const Home = ({ weatherData }) => {
   const [temperatureAsCelsius, setTemperatureAsCelsius] = useState(true);
   const { showTooltip, setShowTooltip, toggleTooltip } = useTooltip();
   const weatherDataLatest = JSON.parse(weatherData).soles[0];
+  console.log(new Date())
 
   return (
     <>
