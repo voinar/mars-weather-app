@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-// import Image from 'next/image';
-// import { Inter } from 'next/font/google';
-// const inter = Inter({ subsets: ['latin'] });
 import Navbar from '@/components/Navbar';
 import Main from '@/components/Main';
 import WeatherAnalytics from '@/components/WeatherAnalytics';
@@ -18,6 +15,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { weatherData: data },
+    revalidate: 259200, // refetch static data every 3 days
   };
 };
 
